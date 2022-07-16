@@ -5,7 +5,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      stencil: "postnobillscolumbo",
+      bangers: "Bangers",
+      ropa: "Ropa Sans",
+    },
+    extend: {
+      backgroundImage: {
+        "camo-pattern": "url(../public/camo.png)",
+      },
+    },
   },
   plugins: [],
 };

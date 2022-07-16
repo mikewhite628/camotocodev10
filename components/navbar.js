@@ -25,28 +25,23 @@ export default function Navbar() {
   }
 
   return (
-    <nav className={`flex justify-between`}>
-      <h1>
-        <Link href="/">
-          <a>Navbar</a>
-        </Link>
-      </h1>
+    <nav className={`flex justify-between h-24 items-center px-8`}>
+      <Link href="/">
+        <h1 className={`font-stencil text-5xl uppercase`}>
+          <a>camo to code</a>
+        </h1>
+      </Link>
 
       {user ? (
-        <Link href="/favorites">
-          <a>Favorites</a>
-        </Link>
-      ) : null}
-
-      {user ? (
-        <div>
-          <h1>{user.email}</h1>
+        <div className={`flex flex-row justify-between items-center`}>
+          <Link href="/favorites">
+            <a className={`mr-4`}>Favorites</a>
+          </Link>
+          <h1 className={`mr-4`}>{user.email}</h1>
           <button onClick={(e) => logout()}>Sign Out</button>
         </div>
       ) : (
-        <Link href="/login">
-          <a>Login</a>
-        </Link>
+        <Link href="/login">Login</Link>
       )}
     </nav>
   );

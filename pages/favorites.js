@@ -1,50 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { collection, getDocs, } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useAuth } from "../context/authContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
+import LoveButton from "../components/LoveButton";
+import useFavorites from "../hooks/useFavorites";
+import useFavoriteList from "../hooks/useFavoriteList";
 
 export default function Favorites() {
-  const [userData, setUserData] = useState();
-  const [favoriteList, setFavoriteList] = useState([]);
-  const [uid, setUid] = useState();
   const { authUser, loading } = useAuth();
   const router = useRouter();
+  const favoriteList = useFavoriteList();
+  const favorites = useFavorites();
 
   // Listen for changes on loading and authUser, redirect if needed
   useEffect(() => {
     if (!loading && !authUser) router.push("/");
   }, [authUser, loading]);
-
-  useEffect(() => {
-    if (window) {
-      async function getItemID() {
-        const sessionID = sessionStorage.getItem("uid");
-
-        const querySnapshot = await getDocs(collection(db, "users"));
-        const linksSnapshot = await getDocs(collection(db, "links"));
-        let favorites;
-        let links = [];
-
-        querySnapshot.forEach((doc) => {
-          if (doc.data().uid === sessionID) {
-            favorites = doc.data().favorites;
-          }
-        });
-
-        linksSnapshot.forEach((link) => {
-          if (favorites.includes(link.data().name)) {
-            links.push(link.data());
-            setFavoriteList(links);
-          }
-        });
-      }
-      getItemID();
-    }
-  }, []);
-
-  console.log(favoriteList);
 
   return (
     <div>
@@ -53,7 +27,10 @@ export default function Favorites() {
           {favoriteList
             ? favoriteList.map((link, i) => (
                 <ul key={i}>
-                  <li key={i}>{link.name}</li>
+                  <li key={i}>
+                    {" "}
+                    <Link href={`/links/${link._id}`}>{`${link.name}`}</Link>
+                  </li>
                   <li>
                     <Image
                       src={link.img}
@@ -62,6 +39,7 @@ export default function Favorites() {
                       height={150}
                     />
                   </li>
+                  <LoveButton itemID={link._id} />
                 </ul>
               ))
             : "nothing yet"}

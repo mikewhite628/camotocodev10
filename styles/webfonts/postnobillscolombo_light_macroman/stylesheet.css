@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'post_no_bills_colombolight';
+    src: url('postnobillscolombo-light-webfont.eot');
+    src: url('postnobillscolombo-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('postnobillscolombo-light-webfont.woff2') format('woff2'),
+         url('postnobillscolombo-light-webfont.woff') format('woff'),
+         url('postnobillscolombo-light-webfont.ttf') format('truetype'),
+         url('postnobillscolombo-light-webfont.svg#post_no_bills_colombolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
