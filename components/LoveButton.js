@@ -4,6 +4,9 @@ import { db } from "../firebaseConfig";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import useFavorites from "../hooks/useFavorites";
+import { faHeart } from "@fortawesome/pro-light-svg-icons";
+import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function LoveButton({ itemID }) {
   const auth = getAuth();
@@ -24,9 +27,19 @@ export default function LoveButton({ itemID }) {
     <>
       {favorites ? (
         favorites.includes(itemID) ? (
-          <button onClick={() => unLoveItem(itemID)}>`Loved by User!`</button>
+          <button onClick={() => unLoveItem(itemID)}>
+            <FontAwesomeIcon
+              icon={fullHeart}
+              className="text-blue-700 h-6 w-6  drop-shadow-lg"
+            />
+          </button>
         ) : (
-          <button onClick={() => loveItem(itemID)}>`Not Loved by User!`</button>
+          <button onClick={() => loveItem(itemID)}>
+            <FontAwesomeIcon
+              icon={faHeart}
+              className="text-blue-700 h-6 w-6  drop-shadow-lg fa-thin"
+            />
+          </button>
         )
       ) : null}
     </>

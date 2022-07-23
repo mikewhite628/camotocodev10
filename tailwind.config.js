@@ -12,7 +12,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "camo-pattern": "url(../public/camo.png)",
+        "camo-pattern": "url(../public/base-snow.png)",
       },
     },
   },

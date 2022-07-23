@@ -4,48 +4,57 @@ import { collection, addDoc, getDocs, getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import Image from "next/image";
 
-export default function Category({categoryData, _id}) {
+export default function Category({ categoryData, _id }) {
   const router = useRouter();
-  const { pid } = router.query; 
-  const [ categoryItems, setCategoryItems ] = useState()
-   
-  console.log(categoryData)
+  const { pid } = router.query;
+  const [categoryItems, setCategoryItems] = useState();
+
+  console.log(categoryData);
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
 
-  async function getData(){
-  let links = []; 
-  const linksSnapshot = await getDocs(collection(db, "links"));
-  linksSnapshot.forEach((link) => {
-    if (link.data().category.includes(categoryData.name)) {
-      links.push(link.data());
-      setCategoryItems(links);
-    }
-  });
+  async function getData() {
+    let links = [];
+    const linksSnapshot = await getDocs(collection(db, "links"));
+    linksSnapshot.forEach((link) => {
+      if (link.data().category.includes(categoryData.name)) {
+        links.push(link.data());
+        setCategoryItems(links);
+      }
+    });
   }
 
-  console.log(categoryItems)
+  console.log(categoryItems);
 
   return (
     <div>
-      <h1>{categoryData.name}</h1>
-      {categoryItems
-        ? categoryItems.map((link, i) => (
-            <div key={i}>
-              <li>{link.name}</li>
-              <li>
-                <Image
-                  src={link.img}
-                  alt={link.name}
-                  width={150}
-                  height={150}
-                />
-              </li>
-            </div>
-          ))
-        : null}
+      <h3 className="text-center font-ropa">{`${categoryData.name} Resources`}</h3>
+      <Image
+        src={categoryData.img}
+        alt={categoryData.name}
+        loading="lazy"
+        width={30}
+        height={30}
+      />
+      <section className="flex flex-row ">
+        {categoryItems
+          ? categoryItems.map((link, i) => (
+              <div key={i}>
+                <li>{link.name}</li>
+                <li>
+                  <Image
+                    src={link.img}
+                    alt={link.name}
+                    width={150}
+                    height={150}
+                  />
+                </li>
+              </div>
+            ))
+          : null}
+      </section>
     </div>
   );
 }
@@ -58,7 +67,7 @@ export async function getStaticProps(context) {
 
   if (docSnap) {
     return {
-      props: { categoryData: docSnap.data(), _id: id},
+      props: { categoryData: docSnap.data(), _id: id },
     };
   } else {
     alert("no data");

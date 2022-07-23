@@ -14,6 +14,16 @@ body
   margin: 0
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
+  font-size: 16px
+  height: 100%
+
+#__next
+  height: 100%
+
+.layout
+  display: grid
+  grid-template-rows: auto 1fr auto
+  height: 100%
 
 a
   color: inherit
@@ -21,6 +31,25 @@ a
 
 *
   box-sizing: border-box
+
+h1
+  font-size: 72px
+  line-height: 72px
+  text-transform: capitalize
+
+h2
+  font-size: 60px
+  text-transform: capitalize
+
+h3
+  font-size: 48px
+  text-transform: capitalize
+h4
+  font-size: 36px
+  text-transform: capitalize
+h5
+  font-size: 24px
+  text-transform: capitalize
 
 .header
   height: 527px
@@ -33,7 +62,20 @@ a
   height: 100%
   width: 100%
   background-color: #000000
-  opacity: .6
+  opacity: .5
 
 .count-text
   font-size: 200px
+
+// .test
+//   white-space: pre
+
+.login
+  height: 600px
+  width: 600px
+
+.btn
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer

@@ -87,6 +87,7 @@ export async function getStaticProps() {
   catSnapshot.forEach((doc) => {
     categories.push({
       name: doc.data().name,
+      img: doc.data().img,
       _id: doc.id,
     });
   });

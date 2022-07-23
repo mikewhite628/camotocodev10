@@ -12,13 +12,11 @@ import { redirect } from "next/dist/server/api-utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
-
-
 export default function Login() {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
   const provider = new GoogleAuthProvider();
-  const router = useRouter()
+  const router = useRouter();
 
   const email = "test@gmail.com";
   const password = "123456";
@@ -26,7 +24,7 @@ export default function Login() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-         router.push("/");
+        router.push("/");
         sessionStorage.setItem("uid", `${user.uid}`);
 
         // ...

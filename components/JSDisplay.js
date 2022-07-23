@@ -1,28 +1,31 @@
-import { getAuth } from "@firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import LoveButton from "./LoveButton";
 import useFavorites from "../hooks/useFavorites";
 
 export default function JSDisplay({ links }) {
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
   const favorites = useFavorites();
 
   return (
     <>
       <ul className="flex flex-row">
         {links.map((x) => (
-          <div key={x._id}>
-            <li key={x._id}>
+          <div
+            key={x._id}
+            className="m-6 h-full w-80 border shadow-md rounded-md"
+          >
+            <li
+              key={x._id}
+              className="flex flex-col items-center justify-center"
+            >
               <Image
                 src={x.img}
                 alt={`${x.name} website preview`}
+                className="border shadow-md rounded-t-md"
                 loading="lazy"
-                width={250}
-                height={250}
+                width={318}
+                height={318}
               />
 
               <p>
@@ -35,7 +38,6 @@ export default function JSDisplay({ links }) {
                   {favorites ? (
                     <LoveButton itemID={x._id} favorites={favorites} />
                   ) : null}
-                  {x.loved}
                 </p>
               </span>
             </li>
