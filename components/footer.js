@@ -1,4 +1,11 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTwitter,
+  faYoutubeSquare,
+  faLinkedin,
+  faPatreon,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
   return (
@@ -14,8 +21,28 @@ export default function Footer() {
           <h4 className={`font-stencil uppercase text-blue-700`}>
             <a>camo to code</a>
           </h4>
-          <p>Something About Us</p>
-          <p>Socials</p>
+          <p className="text-sm">
+            was made by a veteran who wants to make the world of web development
+            accesible to all.
+          </p>
+          <span className="mt-4 flex flex-row justify-between">
+            <FontAwesomeIcon
+              icon={faTwitter}
+              className="text-blue-700 h-10 w-10  drop-shadow-lg"
+            />
+            <FontAwesomeIcon
+              icon={faYoutubeSquare}
+              className="text-blue-700 h-10 w-10  drop-shadow-lg"
+            />
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              className="text-blue-700 h-10 w-10  drop-shadow-lg"
+            />
+            <FontAwesomeIcon
+              icon={faPatreon}
+              className="text-blue-700 h-10 w-10  drop-shadow-lg"
+            />
+          </span>
         </div>
         <div className="flex flex-row justify-evenly w-full">
           <div>
@@ -23,12 +50,12 @@ export default function Footer() {
             <p>Stuff Here</p>
           </div>
           <div>
-            <h5>For Veterans</h5>
+            <h5>Community</h5>
             <p>Stuff Here</p>
           </div>
           <div>
-            <h5>For Veterans</h5>
-            <p>Stuff Here</p>
+            <h5>Company</h5>
+            <p>About</p>
           </div>
         </div>
       </footer>
