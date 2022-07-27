@@ -10,7 +10,6 @@ export default function Link({ linkData, _id }) {
   console.log(linkData);
   return (
     <div>
-      <p>Link id: {_id}</p>
       <p>Name: {linkData.name}</p>
       <p>Name: {linkData.description}</p>
       <Image

@@ -9,6 +9,7 @@ export default function JSDisplay({ links }) {
 
   return (
     <>
+      <h3> Javascript </h3>
       <ul className="flex flex-row">
         {links.map((x) => (
           <div

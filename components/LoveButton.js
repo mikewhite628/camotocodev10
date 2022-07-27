@@ -7,20 +7,18 @@ import useFavorites from "../hooks/useFavorites";
 import { faHeart } from "@fortawesome/pro-light-svg-icons";
 import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useLoved from "../hooks/useLoved";
 
 export default function LoveButton({ itemID }) {
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
   const favorites = useFavorites();
+  const loveRef = useLoved();
 
   const loveItem = (id) => {
-    const lovedRef = doc(db, "users", user.uid);
-    return updateDoc(lovedRef, { favorites: arrayUnion(id) });
+    return updateDoc(loveRef, { favorites: arrayUnion(id) });
   };
 
   const unLoveItem = (id) => {
-    const lovedRef = doc(db, "users", user.uid);
-    return updateDoc(lovedRef, { favorites: arrayRemove(id) });
+    return updateDoc(loveRef, { favorites: arrayRemove(id) });
   };
 
   return (

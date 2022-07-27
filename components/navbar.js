@@ -27,19 +27,18 @@ export default function Navbar() {
     signOut(auth);
   }
 
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       router.push("/");
-  //       sessionStorage.setItem("uid", `${user.uid}`);
-
-  //       // ...
-  //     } else {
-  //       // User is signed out
-  //       // ...
-  //     }
-  //   });
-  // });
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        sessionStorage.setItem("uid", `${user.uid}`);
+        console.log(user.uid);
+        // ...
+      } else {
+        // User is signed out
+        console.log("logged out");
+      }
+    });
+  });
 
   function createUser() {
     createUserWithEmailAndPassword(auth, email, password)
@@ -116,7 +115,7 @@ export default function Navbar() {
               </a>
               <button
                 className={`hover:bg-blue-500 w-full text-center h-full flex items-center btn`}
-                onClick={(e) => logout()}
+                onClick={logout}
               >
                 Sign Out
               </button>

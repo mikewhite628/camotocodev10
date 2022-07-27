@@ -32,7 +32,9 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <div>2022 CamoToCode. All rights reserved.</div>
+      <div className="bg-zinc-50 d-flex justify-center items-center w-full">
+        <p className="mx-auto w-80">2022 CamoToCode All rights reserved.</p>
+      </div>
     </div>
   );
 }

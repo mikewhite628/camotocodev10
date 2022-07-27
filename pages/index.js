@@ -8,7 +8,6 @@ import Header from "../components/header";
 import CategoryDisplay from "../components/categoryDisplay";
 import JSDisplay from "../components/JSDisplay";
 import WebDevDisplay from "../components/WebDevDisplay";
-import useFavorites from "../hooks/useFavorites";
 
 export default function Home({ links, categories, webDev }) {
   const count = "124";
