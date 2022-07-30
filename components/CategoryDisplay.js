@@ -5,7 +5,7 @@ import React from "react";
 export default function CategoryDisplay({ categories }) {
   return (
     <>
-      <h3 className="h-12 w-80 bg-gray-400 shadow-md btn font-ropa">
+      <h3 className="h-18 w-80 bg-blue-700 text-white rounded-t shadow-md btn font-ropa">
         DISCOVER
       </h3>
 
